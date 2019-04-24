@@ -1,0 +1,48 @@
+<div class="item">
+  <div class="main">
+    <div class="top">
+      <img
+        class="user-image"
+        [src]="tweet.userImage"
+        alt="imagedoesntload">
+      <span class="user-name-container">
+        <span class="user-name">{{tweet.nickname}}</span>
+      </span>
+    </div>
+    <hr class="divider"/>
+    <p class="summary">
+      {{tweet.text | slice : 0 : 20 }}...
+    </p>
+    <hr class="divider"/>
+    <div class="links">
+        <img src="../../../../assets/back.png" alt="">
+        <img src="../../../../assets/compare.png" alt="forward">
+        <img
+          [src]="tweet.favorite ? '../../../../assets/star.png': '../../../../assets/star_border.png' "
+          (click)="markAsFavorite(tweet.id)"
+          alt="favorite">
+    </div>
+  </div>
+  <div class="read-more">
+    <div class="semicircle">
+      <img src="../../../../assets/twitter.png" alt="">
+    </div>
+    <div class="read-more-shorten" (click)="showMore()">
+      <p>...más
+          <img src="../../../../assets/expand_more.png" alt="more"></p>
+    </div>
+    <div *ngIf="showMoreInfo" class="read-more-expanded">
+      <hr class="divider"/>
+        <p class="date">
+          {{tweet.creationDate | date:'h:mm a - d MMM y'}}
+        </p>
+      <hr class="divider"/>
+      <p class="more-info">
+        {{moreInfo}}
+      </p>
+      <p class="show-less">
+        <img src="../../../../assets/expand_less.png" alt="less" (click)="showMoreInfo = false">
+      </p>
+    </div>
+  </div>
+</div>

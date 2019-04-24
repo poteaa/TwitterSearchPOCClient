@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="search">
+    <span class="search-text">
+      Twiteet Search
+    </span>
+    <div class="searchbox">
+      <img src="../../../assets/search.png" (click)="search(searchText)">
+      <input [(ngModel)]="searchText" placeholder="Escriba una palabra clave">
+    </div>
+  </div>
+  <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()">
+    <p *ngIf="searchText && !tweets.length">No hay resultador para la búsqueda</p>
+    <app-tweet-item class="item"
+      *ngFor="let tweet of tweets"
+      [tweet]="tweet">
+    </app-tweet-item>
+  </div>
+</div>

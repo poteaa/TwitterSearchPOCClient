@@ -1,0 +1,135 @@
+@generic-text-font-color: #585858;
+@size: 45px;
+@tweet-back-color: #4AB3F4;
+
+* {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1em;
+  margin: 0;
+}
+
+.shadow-borders-mixin(@color) {
+  box-shadow: 2px 2px 2px 3px @color;
+}
+
+.item {
+  background-color: white;
+  .shadow-borders-mixin(rgb(141, 140, 140));
+  border-radius: 10px;
+  height: 100%;;
+  width: 100%;
+  position: relative;
+  .main {
+    margin-bottom: calc(@size + 15px);
+    .top {
+      display: table;
+      .user-image {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        max-width: 48px;
+        width: 100%;
+        height: 48px;
+        border-radius: 5px;
+        margin: 10px 20px 10px 10px;
+      }
+      .user-name-container {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        height: 100%;
+        .user-name {
+          font-size: 1em;
+          font-weight: bold;
+          color: @generic-text-font-color;
+    
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          
+          // position: absolute;
+          // top: 50%;
+          // // left: 50%;
+          // -moz-transform: translateY(-50%);
+          // -webkit-transform: translateY(-50%);
+          // transform: translateY(-50%);
+        }
+      }
+    }
+    .links {
+      height: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+  .summary {
+    color: @generic-text-font-color;
+    margin:10px;
+    min-height: 70px;
+  }
+  .read-more {
+    .shadow-borders-mixin(rgb(160, 159, 159));
+    z-index: 1;
+    color: #ffffff;
+    background-color: @tweet-back-color;
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    .semicircle {
+      border-top-left-radius: @size * 2;
+      border-top-right-radius: @size * 2;
+      background-color: inherit;
+      height: @size;
+      width: @size * 2;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%);
+      text-align: center;
+      z-index: 1;
+      img {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        margin-top: 12px;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .read-more-shorten {
+      position: relative;
+      height: 25px;
+      cursor: pointer;
+      p {
+        position: absolute;
+        right: 10px;
+      }
+    }
+    .read-more-expanded {
+      position: relative;
+      z-index: 100;
+      .date {
+        margin-left: 10px;
+      }
+      .show-less {
+        text-align: right;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+    .more-info {
+      margin: 10px 15px 30px 15px;
+    }
+  }
+}
+
+hr.divider {
+  margin: 5px;
+}
